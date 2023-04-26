@@ -29,16 +29,12 @@ class RegisterRolesType extends AbstractType
             ])
         ;
         $builder->get('Roles')
-            ->addModelTransformer(new CallbackTransformer(
-                function ($rolesArray) {
-                     // transform the array to a string
-                     return count($rolesArray)? $rolesArray[0]: null;
-                },
+            ->addModelTransformer(
                 function ($rolesString) {
                      // transform the string back to an array
                      return [$rolesString];
                 }
-        ));
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver): void
