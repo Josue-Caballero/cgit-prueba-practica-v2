@@ -34,8 +34,10 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+            $user->setName("San")
+            $user->setAge(32)
+            $entityManager->negativeRegister($user);
+            $entityManager->remove();
             // do anything else you need here, like send an email
 
             return $userAuthenticator->authenticateUser(
